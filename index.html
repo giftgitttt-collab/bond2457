@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOND - الدخول</title>
+  <style>
+    :root {
+      --bg-cream: #F9F3EE;
+      --card-bg: #FFFFFF;
+      --accent-brown: #5C3A21;
+      --accent-light-brown: #8C6239;
+      --border-color: #E2D3C7;
+      --text-dark: #3D2314;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #EFE3D8, #F9F3EE, #E6D5C3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 380px;
+      padding: 20px;
+    }
+
+    /* عرض اللوجو الأصلي بصورة PNG شفافة بدون خلفية */
+    .brand-logo-img {
+      width: 220px;
+      height: auto;
+      margin-bottom: 20px;
+      display: block;
+      object-fit: contain;
+      mix-blend-mode: multiply; /* تضمن دمج الصورة بمرونة مع لون خلفية الموقع */
+    }
+
+    .password-box {
+      background: var(--card-bg);
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(92, 58, 33, 0.08);
+      text-align: center;
+      width: 100%;
+      border: 1px solid var(--border-color);
+    }
+
+    .password-box h2 {
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .password-box input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      outline: none;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 15px;
+      transition: border-color 0.3s;
+      background-color: #fff;
+      color: var(--text-dark);
+    }
+
+    .password-box input:focus {
+      border-color: var(--accent-light-brown);
+    }
+
+    .password-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-brown);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .password-box button:hover {
+      background-color: var(--accent-light-brown);
+      transform: translateY(-2px);
+    }
+
+    .error-msg {
+      color: #c0392b;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      min-height: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    
+    <!-- صورة اللوجو الأصلي المزالة خلفيته -->
+    <img src="لوجو2.png" alt="BOND Brand Logo" class="brand-logo-img">
+
+    <div class="password-box">
+      <h2>أدخل كلمة السر للدخول</h2>
+      <input type="password" id="password-input" placeholder="كلمة السر...">
+      <button onclick="checkPassword()">دخول</button>
+      <p id="error-message" class="error-msg"></p>
+    </div>
+
+  </div>
+
+  <script>
+    const correctPassword = "1234";
+
+    function checkPassword() {
+      const inputField = document.getElementById("password-input");
+      const errorMessage = document.getElementById("error-message");
+
+      if (inputField.value === correctPassword) {
+        window.location.href = "p.html";
+      } else {
+        errorMessage.textContent = "كلمة السر غير صحيحة، حاولي مرة أخرى.";
+        inputField.value = "";
+      }
+    }
+
+    document.getElementById("password-input").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        checkPassword();
+      }
+    });
+  </script>
+</body>
+</html>
